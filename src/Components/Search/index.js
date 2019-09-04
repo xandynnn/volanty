@@ -18,7 +18,7 @@ export default function Search () {
     const [marcas, setMarcas] = useState([]);
     const [veiculos, setVeiculos] = useState([]);
     const [modelos, setModelos] = useState([]);
-    const [veiculo, setVeiculo] = useState({}); 
+    const [veiculo, setVeiculo] = useState({});
 
     //
     //  Carrega as marcas
@@ -73,9 +73,9 @@ export default function Search () {
                             <legend>Quanto vale meu carro?</legend>
                             <div className="col-xs-12 col-sm-3">
                                 <div className="formGroup">
-                                    <label>Selecione a Marca</label>
+                                    <label htmlFor="marca">Selecione a Marca</label>
                                     <div className="sSelect">
-                                        <select onChange={e=>listaVeiculos(e.target.value)}>
+                                        <select id="marca" onChange={e=>listaVeiculos(e.target.value)}>
                                             {marcas.map(marca=>(
                                                 <option key={marca.id} value={marca.id}>{marca.name}</option>
                                             ))}
@@ -83,13 +83,13 @@ export default function Search () {
                                     </div>
                                 </div>
                             </div>
-                        
+
                             {veiculos.length > 0 &&
                             <div className="col-xs-12 col-sm-6">
                                 <div className="formGroup">
-                                    <label>Selecione o Modelo</label>
+                                    <label htmlFor="modelo">Selecione o Modelo</label>
                                     <div className="sSelect">
-                                        <select onChange={e=>listaModelos(e.target.value)}>
+                                        <select id="modelo" onChange={e=>listaModelos(e.target.value)}>
                                             {veiculos.map((veiculo,idx)=>(
                                                 <option key={idx} value={veiculo.id_marca + '|' + veiculo.id_modelo }>{veiculo.name}</option>
                                             ))}
@@ -98,13 +98,13 @@ export default function Search () {
                                 </div>
                             </div>
                             }
-                            
+
                             {modelos.length > 0 &&
                             <div className="col-xs-12 col-sm-3">
                                 <div className="formGroup">
-                                    <label>Selecione o Ano</label>
+                                    <label htmlFor="ano">Selecione o Ano</label>
                                     <div className="sSelect">
-                                        <select onChange={e=>listaAnos(e.target.value)}>
+                                        <select id="ano" onChange={e=>listaAnos(e.target.value)}>
                                             {modelos.map((modelo,idx)=>(
                                                 <option key={idx} value={modelo.id_marca + '|' + modelo.id_modelo + '|' + modelo.id_modelo_ano }>{modelo.name}</option>
                                             ))}
@@ -118,7 +118,7 @@ export default function Search () {
                     </form>
                 </div>
                 }
-                
+
                 { Object.keys(veiculo).length !== 0 &&
                 <div className="row">
                     <div className="boxCarro">
